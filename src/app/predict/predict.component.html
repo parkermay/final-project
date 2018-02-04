@@ -3,18 +3,23 @@
 
   <div>
     <label>Procedure Name:
-      <input [(ngModel)]="procedureName">
+      <select class='input' [(ngModel)]="procedureName">
+        <option *ngFor="let procedure of procedures" [value]="procedure">{{procedure}}</option>
+      </select>
     </label>
+
     <p>
-      <label>Hospital Region:
-        <input [(ngModel)]="hospitalRegion">
-      </label>
-      <p>
-        <button (click)="requestEstimate()">Run Estimation</button>
-          <p>
-              Estimated total payments: {{estTotalPayment}}
+    <label>Hospital Region:
+      <select class='input' [(ngModel)]="hospitalRegion">
+        <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+      </select>
+    </label>
+
+    <p>
+    <button (click)="requestEstimate()">Run Estimation</button>
+
+    <p>
+    <h4>Estimated total payments: {{estTotalPayment | currency:'USD':'symbol'}}</h4>
   </div>
-  <h4>{{procedureName}}</h4>
-  <h4>{{hospitalRegion}}</h4>
 
 </div>

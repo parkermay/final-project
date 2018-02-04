@@ -11,11 +11,11 @@ export class EstimateService {
     apiMachineLearningKey = 'Z21yGPuLBytgNtKQl5grucbM1WukVEfh8sJjo3mQ022zB/JgoSswN3yNaOiu4tOMIJ5B5K1hYUMikRiP1Z2m5A==';
     apiMgmtKey = '8dce00104ad743ff8574870671589bac';
 
-
-
     constructor(private http: HttpClient) { }
 
     calculateEstimate(procedureName: string, hospitalRegion: string): Observable<Estimate> {
+        console.log(' procedureName = ' + procedureName);
+        console.log(' hospitalRegion = ' + hospitalRegion);
         const httpOptions = {
             headers: new HttpHeaders({
                 'Authorization': 'Bearer ' + this.apiMachineLearningKey,
@@ -36,8 +36,8 @@ export class EstimateService {
                 ],
                 "Values": [
                   [
-                    "039 - EXTRACRANIAL PROCEDURES W/O CC/MCC",
-                    "AL - Birmingham",
+                    procedureName,
+                    hospitalRegion,
                     0
                   ]
                 ]
@@ -48,19 +48,7 @@ export class EstimateService {
             }
         };
 
-//        return of(1200.25);
-//        let x: Observable<number> = 
-        return         this.http.post<Estimate>(this.apiMgmtUrl, body, httpOptions);
-        // .toPromise()
-        
-        // .catch(error => this.handleError(error));
-//        return of(1200.25);
-}
-
-private handleError(error: any): Promise<any> {
-    console.error('Exception:', error.error);
-    return Promise.reject(error);
-}
-
+        return this.http.post<Estimate>(this.apiMgmtUrl, body, httpOptions);
+    }
 }
 
