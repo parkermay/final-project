@@ -1,0 +1,20 @@
+<div class='predict-main'>
+  <h1>Estimate Total Payments</h1>
+
+  <div>
+    <label>Procedure Name:
+      <input [(ngModel)]="procedureName">
+    </label>
+    <p>
+      <label>Hospital Region:
+        <input [(ngModel)]="hospitalRegion">
+      </label>
+      <p>
+        <button (click)="requestEstimate()">Run Estimation</button>
+          <p>
+              Estimated total payments: {{estTotalPayment}}
+  </div>
+  <h4>{{procedureName}}</h4>
+  <h4>{{hospitalRegion}}</h4>
+
+</div>
