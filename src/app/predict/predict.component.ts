@@ -10,7 +10,7 @@ import { EstimateService } from '../services/estimate.service';
 export class PredictComponent implements OnInit {
     procedureName: string;
     hospitalRegion: string;
-    estTotalPayment: number = 0;
+    estTotalPayment: string = '0';
 
     constructor(private estimateService: EstimateService) { }
 
@@ -24,10 +24,13 @@ export class PredictComponent implements OnInit {
         //        this.estTotalPayment = this.estimateService.calculateEstimate(this.procedureName, this.hospitalRegion);
 
         this.estimateService.calculateEstimate(this.procedureName, this.hospitalRegion)
-            .then(messages => {
-                console.log('in then clause');
+        .subscribe(data => {
+            this.estTotalPayment = data.Results.output1.value.Values[0][3];
+        })
+            // .then(messages => {
+            //     console.log('in then clause');
 
-            }).catch(error => console.error("Error calling estimateService.calculateEstimate: " + error.message));
+            // }).catch(error => console.error("Error calling estimateService.calculateEstimate: " + error.message));
 
     }
 
