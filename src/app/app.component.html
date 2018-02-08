@@ -1,1 +1,30 @@
-<app-predict></app-predict>
+<div class='app-main'>
+  <h1>Predict Wine Rating</h1>
+
+  <div>
+    <label>Province:
+      <select class='input' [(ngModel)]="province">
+        <option *ngFor="let provinceOpt of provinces" [value]="provinceOpt">{{provinceOpt}}</option>
+      </select>
+    </label>
+
+    <p>
+    <label>Variety:
+      <select class='input' [(ngModel)]="variety">
+        <option *ngFor="let varietyOpt of varieties" [value]="varietyOpt">{{varietyOpt}}</option>
+      </select>
+    </label>
+
+    <p>
+      <label>Price:
+        <input [(ngModel)]="price">
+      </label>
+  
+    <p>
+    <button (click)="requestEstimate()">Run Prediction</button>
+
+    <p>
+    <h4>Predicted Wine Rating: {{estWineRating | number:'1.1-1'}}</h4>
+  </div>
+
+</div>
