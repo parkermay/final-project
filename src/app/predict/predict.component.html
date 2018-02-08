@@ -1,25 +1,30 @@
 <div class='predict-main'>
-  <h1>Estimate Total Payments</h1>
+  <h1>Predict Wine Rating</h1>
 
   <div>
-    <label>Procedure Name:
-      <select class='input' [(ngModel)]="procedureName">
-        <option *ngFor="let procedure of procedures" [value]="procedure">{{procedure}}</option>
+    <label>Province:
+      <select class='input' [(ngModel)]="province">
+        <option *ngFor="let provinceOpt of provinces" [value]="provinceOpt">{{provinceOpt}}</option>
       </select>
     </label>
 
     <p>
-    <label>Hospital Region:
-      <select class='input' [(ngModel)]="hospitalRegion">
-        <option *ngFor="let region of regions" [value]="region">{{region}}</option>
+    <label>Variety:
+      <select class='input' [(ngModel)]="variety">
+        <option *ngFor="let varietyOpt of varieties" [value]="varietyOpt">{{varietyOpt}}</option>
       </select>
     </label>
 
     <p>
-    <button (click)="requestEstimate()">Run Estimation</button>
+      <label>Price:
+        <input [(ngModel)]="price">
+      </label>
+  
+    <p>
+    <button (click)="requestEstimate()">Run Prediction</button>
 
     <p>
-    <h4>Estimated total payments: {{estTotalPayment | currency:'USD':'symbol'}}</h4>
+    <h4>Predicted Wine Rating: {{estWineRating | number:'1.1-1'}}</h4>
   </div>
 
 </div>
