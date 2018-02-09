@@ -1,30 +1,29 @@
 <div class='app-main'>
-  <h1>Predict Wine Rating</h1>
 
-  <div>
-    <label>Province:
-      <select class='input' [(ngModel)]="province">
+  <form>
+    <h1>Predict Wine Rating</h1>
+
+    <div class="form-group">
+      <label for="provinceInput">Choose a Province</label>
+      <select id="provinceInput" class="form-control" [(ngModel)]="province" name="province">
         <option *ngFor="let provinceOpt of provinces" [value]="provinceOpt">{{provinceOpt}}</option>
       </select>
-    </label>
-
-    <p>
-    <label>Variety:
-      <select class='input' [(ngModel)]="variety">
+    </div>
+    <div class="form-group">
+      <label for="varietyInput">Choose a Variety</label>
+      <select id="varietyInput" class="form-control" [(ngModel)]="variety" name="variety">
         <option *ngFor="let varietyOpt of varieties" [value]="varietyOpt">{{varietyOpt}}</option>
       </select>
-    </label>
+    </div>
+    <div class="form-group">
+      <label for="priceInput">Enter a Price</label>
+      <input type="text" id="priceInput" class="form-control" [(ngModel)]="price" name="price">
+    </div>
+    <button class="btn btn-primary" (click)="requestEstimate()">Run Prediction</button>
 
-    <p>
-      <label>Price:
-        <input [(ngModel)]="price">
-      </label>
-  
-    <p>
-    <button (click)="requestEstimate()">Run Prediction</button>
-
-    <p>
-    <h4>Predicted Wine Rating: {{estWineRating | number:'1.1-1'}}</h4>
-  </div>
+    <div class="form-group" *ngIf="estWineRating > 0">
+      <h3>Predicted Wine Rating: {{estWineRating | number:'1.1-1'}}</h3>
+    </div>
+  </form>
 
 </div>
